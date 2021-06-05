@@ -1,0 +1,48 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<br>
+<div class="container text-center ">
+<div class="card shadow p-3 mb-5 bg-body rounded">
+    <form class="center" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="images" class="form-label my-2">Taranmış dökümanı ekleyin</label>
+        <input class="form-control"  accept="image/*" type="file" name="files" id="formFileMultiple" multiple />
+        <button type="submit" class="my-2 btn btn-primary" value="tara">Tara</button>
+    </form>
+    </div>
+</div>
+<br>
+<div class="py-1">
+    <div class="container">
+        <div class="row hidden-md-up">
+            {% for object in objects %}
+            <div class="col-md-4">
+                <div class="card my-3 shadow p-3 mb-5 bg-body rounded" style="width: 18rem; height:400px;">
+                    <!--  <img class="card-img-top" width="150" height="300" src="{{object.image.url}}" alt="Card image cap"> -->
+                    <div class="card-body">
+                        {% if object.success %}
+                        <div class="alert alert-success" role="alert">Başarıyla okundu.</div>
+                        <p class="card-text">Departman : {{object.department_code}}</p>
+                        <p class="card-text">Ders kodu : {{object.lesson_code}}</p>
+                        <p class="card-text">Sınav kodu : {{object.exam_code}}</p>
+                        <p class="card-text">Tarih : {{object.date}}</p>
+                        <p class="card-text">Tc : {{object.tc}}</p>
+                        <p class="card-text">Puan : {{object.skor}}</p>
+                        {% else%}
+                        <div class="alert alert-danger" role="alert">Kağıt okunamadı.</div>
+                        <p class="card-text">{{object.state_error_verbose}}</p>
+                        {% endif %}
+                        <a target="popup"
+                            onclick="window.open('{{object.image.url}}','popup','width=600,height=600'); return false;"
+                            class="btn btn-primary">Görseli incele</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
