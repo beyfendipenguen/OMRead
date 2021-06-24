@@ -38,7 +38,7 @@ class ExamDocument(models.Model):
 
     state_success = models.BooleanField(_("state_success"), default=False)
 
-    state_error = models.TextField(_("state_error"),choices=errors)
+    state_error = models.TextField(_("state_error"), choices=errors)
 
     skor = models.IntegerField(null=True)
 

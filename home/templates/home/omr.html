@@ -4,13 +4,13 @@
 
 <br>
 <div class="container text-center ">
-<div class="card shadow p-3 mb-5 bg-body rounded">
-    <form class="center" action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="images" class="form-label my-2">Taranmış dökümanı ekleyin</label>
-        <input class="form-control"  accept="image/*" type="file" name="files" id="formFileMultiple" multiple />
-        <button type="submit" class="my-2 btn btn-primary" value="tara">Tara</button>
-    </form>
+    <div class="card shadow p-3 mb-5 bg-body rounded">
+        <form class="center" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="images" class="form-label my-2">Taranmış dökümanı ekleyin</label>
+            <input class="form-control" accept="image/*" type="file" name="files" id="formFileMultiple" multiple />
+            <button type="submit" class="my-2 btn btn-primary" value="tara">Tara</button>
+        </form>
     </div>
 </div>
 <br>
